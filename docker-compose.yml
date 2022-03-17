@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        UBUNTU_VERSION:
+        RUBY_VERSION:
+        RAILS_VERSION:
+        BUNDLER_VERSION:
+    volumes:
+      - .:/app:cached

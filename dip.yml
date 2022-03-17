@@ -1,0 +1,28 @@
+version: "4.1"
+
+compose:
+  files:
+    - docker-compose.yml
+  project_name: docker-ubuntu
+
+interaction:
+  sh:
+    description: Open a shell within a Rails container
+    service: web
+    command: /bin/sh
+
+  bash:
+    description: Open a Bash shell within a Rails container
+    service: web
+    command: /bin/bash
+
+  bundle:
+    description: Run Bundler commands
+    service: web
+    command: bundle
+    compose_run_options: [no-deps]
+
+  rails:
+    description: Run Rails commands
+    service: web
+    command: rails
