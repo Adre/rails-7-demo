@@ -1,24 +1,19 @@
 # README
+## setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A dockerised Rails 7 demo app based on the Rails 7 DHH demo.
 
-Things you may want to cover:
+1. `dip provision` to provision the containers
+2. `dip rails s` to run the rails server
+3. Go to `http://demo.localhost/posts` in your browser to go to the posts index
 
-* Ruby version
+## useful information
 
-* System dependencies
+- You can manually build the image with `docker compose build`
+- `dip.yml` has some other useful commands
+- `dip rails test` runs the test suite
 
-* Configuration
 
-* Database creation
+## known issues
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- images in the rte work, but images don't persist through provisioning

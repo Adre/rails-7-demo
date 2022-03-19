@@ -42,3 +42,13 @@ interaction:
     description: pin javascript libraries using importmap
     service: web
     command: ./bin/importmap pin
+
+
+provision:
+  - dip compose down --volumes
+  - dip compose up
+  - dip bundle install
+  - dip rails db:create
+  - dip rails db:create RAILS_ENV=test
+  - dip rails db:migrate
+  - dip rails db:migrate RAILS_ENV=test
