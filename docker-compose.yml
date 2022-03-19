@@ -11,3 +11,10 @@ services:
         BUNDLER_VERSION:
     volumes:
       - .:/app:cached
+      - bundle:/usr/local/bundle
+    ports:
+      - "80:3000"
+    command: rails server -b 0.0.0.0
+
+volumes:
+  bundle:

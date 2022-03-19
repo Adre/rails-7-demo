@@ -3,7 +3,7 @@ version: "4.1"
 compose:
   files:
     - docker-compose.yml
-  project_name: docker-ubuntu
+  project_name: rails-7-demo
 
 interaction:
   sh:
@@ -26,3 +26,19 @@ interaction:
     description: Run Rails commands
     service: web
     command: rails
+    subcommands:
+      s:
+        description: Run headless Rails server available at http://appname.localhost
+        service: web
+        compose:
+          run_options: [service-ports, use-aliases, detach]
+      server:
+        description: Run Rails server available at http://appname.localhost
+        service: web
+        compose:
+          run_options: [service-ports, use-aliases]
+
+  pin:
+    description: pin javascript libraries using importmap
+    service: web
+    command: ./bin/importmap pin

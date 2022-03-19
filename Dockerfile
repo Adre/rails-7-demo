@@ -23,6 +23,8 @@ RUN apt update -qq \
     software-properties-common \
     libffi-dev \
     gnupg2 \
+    libvips \
+    libvips-dev \
   && apt clean \
   && rm -rf /var/cache/apt/archives/* \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
@@ -43,7 +45,7 @@ RUN rbenv install ${RUBY_VERSION}
 RUN rbenv global ${RUBY_VERSION}
 
 # Install bundler
-ENV LANG=C.UTF-8 BUNDLE_JOBS=4 BUNDLE_RETRY=3
+ENV LANG=C.UTF-8 BUNDLE_JOBS=4 BUNDLE_RETRY=3 BUNDLE_PATH=/usr/local/bundle
 RUN eval "$(rbenv init -)" \
   && echo "gem: --no-document" > ~/.gemrc \
   && gem update --system \
@@ -54,4 +56,3 @@ RUN eval "$(rbenv init -)" \
 # Create a directory for the app code
 RUN mkdir -p /app
 WORKDIR /app
-
